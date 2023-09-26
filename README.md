@@ -1,13 +1,19 @@
-Nix Installation Trail
+**Nix Installation Trail**
 
 #update and cleanup
-sudo nix-channel --update && sudo nixos-rebuild switch && nix-env -u ‘*’ && home-manager switch && nix-store --gc && nix-store --gc --delete-orphans && nix-env --clean
+sudo nixos-rebuild switch --repair && sudo nix-collect-garbage -d && sudo nixos-rebuild switch --upgrade && sudo home-manager switch
 
-#add unstable repo
-???
+#unstable channel
+sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos
+
 
 #open configuration file
 sudo nano /etc/nixos/configuration.nix
+
+#define hostname
+#disable cups
+#enable touchpad support
+#enable ssh
 
 #restore packages
 #add these to the list after environment.systemPackages = with pkgs; [
@@ -54,13 +60,22 @@ sudo nano /etc/nixos/configuration.nix
   pkgs.zoom-us
   pkgs.rescuetime
   pkgs.htop
-  #unstable packages to install later
-  #pkgs.stacer
-  #pkgs.peazip
-  #pkgs.normcap
+  #unstable packages
+  pkgs.stacer
+  pkgs.peazip
+  pkgs.normcap
  
-#add this before the last “}” in the configuration file
-services.teamviewer.enable = true;
+#add these after “List services” but before the last “}” in the configuration file
+
+“services.teamviewer.enable = true;
+
+#keep NixOS system up-to-date automatically
+system.autoUpgrade.enable = true;
+system.autoUpgrade.allowReboot = true;”
+
+#automatic nix store noontime garbage collection
+nix.gc.automatic = true;
+nix.gc.dates = "12:10";
 
 #execute this command after
 sudo nixos-rebuild switch
@@ -71,3 +86,6 @@ sudo nixos-rebuild switch
 megasync + startup + thunar bookmarks +  panel + wallpapers + teamviewer + zoom + edge
 
 startup: ksnip, kdeconnect-indicator, megasync
+
+#deep clean & shutdown
+sudo nix-store --optimise && sudo poweroff
