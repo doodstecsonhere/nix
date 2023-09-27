@@ -1,70 +1,69 @@
 **Nix Installation Trail**
 
-#update and cleanup
-sudo nixos-rebuild switch --repair && sudo nix-collect-garbage -d && sudo nixos-rebuild switch --upgrade && home-manager switch
-
 #unstable channel
 sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos
 
+#confirm unstable channel
+sudo nix-channel --list | grep nixos
+
+#update and cleanup
+sudo nixos-rebuild switch --repair && sudo nixos-rebuild switch --upgrade && sudo nix-collect-garbage -d && sudo nix-store --optimise && home manager switch
 
 #open configuration file
 sudo nano /etc/nixos/configuration.nix
 
 #define hostname
 #disable cups
-#enable touchpad support
-#enable ssh
+#enable/disable touchpad support
+#enable/disable ssh
 
 #restore packages
 #add these to the list after environment.systemPackages = with pkgs; [
 
- (vivaldi.override {
-    proprietaryCodecs = true;
-    enableWidevine = true;
-  })
-  vivaldi-ffmpeg-codecs
-  widevine-cdm
-  wget
-  teamviewer
-  yt-dlp
-  linux-firmware
-  unzip
-  kcalc
-  ksnip
-  sshfs
-  onboard
-  spotify
-  ibus
-  picom
-  xcompmgr
-  smplayer
-  qbittorrent
-  baobab
-  timeshift
-  neofetch
-  git
-  realvnc-vnc-viewer
-  google-chrome
-  stremio
-  ventoy-bin
-  megasync
-  pkgs.xfce.xfce4-volumed-pulse
-  pkgs.xfce.xfce4-clipman-plugin
-  pkgs.xfce.xfce4-pulseaudio-plugin
-  pkgs.xfce.xfce4-whiskermenu-plugin
-  pkgs.microsoft-edge
-  pkgs.lightdm-gtk-greeter
-  pkgs.bibata-cursors
-  pkgs.pavucontrol
-  pkgs.libsForQt5.kdeconnect-kde
-  pkgs.zoom-us
-  pkgs.rescuetime
-  pkgs.htop
-  #unstable packages
-  pkgs.stacer
-  pkgs.peazip
-  pkgs.normcap
- 
+pkgs.vivaldi
+pkgs.wget
+pkgs.teamviewer
+pkgs.yt-dlp
+pkgs.linux-firmware
+pkgs.unzip
+pkgs.kcalc
+pkgs.ksnip
+pkgs.sshfs
+pkgs.onboard
+pkgs.spotify
+pkgs.ibus
+pkgs.picom
+pkgs.xcompmgr
+pkgs.smplayer
+pkgs.qbittorrent
+pkgs.baobab
+pkgs.borgbackup
+pkgs.neofetch
+pkgs.git
+pkgs.realvnc-vnc-viewer
+pkgs.google-chrome
+pkgs.stremio
+pkgs.ventoy-bin
+pkgs.megasync
+pkgs.xfce.xfce4-volumed-pulse
+pkgs.xfce.xfce4-clipman-plugin
+pkgs.xfce.xfce4-pulseaudio-plugin
+pkgs.xfce4.xfce4-whiskermenu-plugin
+pkgs.xfce.xfce4-panel-profiles
+pkgs.microsoft-edge
+pkgs.lightdm-gtk-greeter
+pkgs.banana-cursor
+pkgs.pavucontrol
+pkgs.libsForQt5.kdeconnect-kde
+pkgs.zoom-us
+pkgs.rescuetime
+pkgs.htop
+#unstable-only packages
+pkgs.stacer
+pkgs.peazip
+pkgs.normcap
+
+
 #add these after “List services” but before the last “}” in the configuration file
 
 “services.teamviewer.enable = true;
@@ -81,11 +80,8 @@ nix.gc.dates = "12:10";
 sudo nixos-rebuild switch
 
 #figure out how to install/integrate later:
-#mugshot timeshift-autosnap 
+#mugshot 
 
 megasync + startup + thunar bookmarks +  panel + wallpapers + teamviewer + zoom + edge
 
 startup: ksnip, kdeconnect-indicator, megasync
-
-#deep clean & shutdown
-sudo nix-store --optimise && sudo poweroff
