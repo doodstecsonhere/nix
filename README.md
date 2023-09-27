@@ -1,7 +1,7 @@
 **Nix Installation Trail**
 
 #update and cleanup
-sudo nixos-rebuild switch --repair && sudo nix-collect-garbage -d && sudo nixos-rebuild switch --upgrade && sudo home-manager switch
+sudo nixos-rebuild switch --repair && sudo nix-collect-garbage -d && sudo nixos-rebuild switch --upgrade && home-manager switch
 
 #unstable channel
 sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos
