@@ -7,7 +7,7 @@ sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos
 sudo nix-channel --list | grep nixos
 
 #update and cleanup
-sudo nixos-rebuild switch --repair && sudo nixos-rebuild switch --upgrade && sudo nix-collect-garbage -d && sudo nix-store --optimise && home manager switch && nix flake update
+sudo nixos-rebuild switch --repair && sudo nixos-rebuild switch --upgrade && sudo nix-collect-garbage -d && sudo nix-store --optimise && home-manager switch && nix flake update && reboot
 
 #open configuration file
 sudo nano /etc/nixos/configuration.nix
