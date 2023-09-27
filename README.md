@@ -7,7 +7,7 @@ sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos
 sudo nix-channel --list | grep nixos
 
 #update and cleanup
-sudo nixos-rebuild switch --repair && sudo nixos-rebuild switch --upgrade && sudo nix-collect-garbage -d && sudo nix-store --optimise && home manager switch
+sudo nixos-rebuild switch --repair && sudo nixos-rebuild switch --upgrade && sudo nix-collect-garbage -d && sudo nix-store --optimise && home manager switch && nix flake update
 
 #open configuration file
 sudo nano /etc/nixos/configuration.nix
@@ -45,7 +45,6 @@ pkgs.google-chrome
 pkgs.stremio
 pkgs.ventoy-bin
 pkgs.megasync
-pkgs.xfce.xfce4-volumed-pulse
 pkgs.xfce.xfce4-clipman-plugin
 pkgs.xfce.xfce4-pulseaudio-plugin
 pkgs.xfce4.xfce4-whiskermenu-plugin
@@ -58,6 +57,7 @@ pkgs.libsForQt5.kdeconnect-kde
 pkgs.zoom-us
 pkgs.rescuetime
 pkgs.htop
+pkgs.home-manager
 #unstable-only packages
 pkgs.stacer
 pkgs.peazip
@@ -76,8 +76,17 @@ system.autoUpgrade.allowReboot = true;”
 nix.gc.automatic = true;
 nix.gc.dates = "12:10";
 
+#flakes
+nix.settings.experimental-features [ "nix-command" "flakes" ];
+
 #execute this command after
 sudo nixos-rebuild switch
+
+#home manager init
+home-manager init
+
+#flakes init
+nix flake init
 
 #figure out how to install/integrate later:
 #mugshot 
