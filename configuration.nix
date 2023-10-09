@@ -98,7 +98,6 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-#pkgs.borgbackup
 pkgs.vivaldi
 pkgs.vivaldi-ffmpeg-codecs
 pkgs.wget
@@ -117,6 +116,7 @@ pkgs.xcompmgr
 pkgs.smplayer
 pkgs.qbittorrent
 pkgs.baobab
+pkgs.borgbackup
 pkgs.neofetch
 pkgs.git
 pkgs.realvnc-vnc-viewer
@@ -139,7 +139,7 @@ pkgs.bibata-cursors
 pkgs.stacer
 pkgs.peazip
 pkgs.tgpt
-#pkgs.normcap
+pkgs.normcap
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
