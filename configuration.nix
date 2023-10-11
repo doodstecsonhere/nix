@@ -99,16 +99,11 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
 pkgs.linux-firmware
-pkgs.unzip
 pkgs.kcalc
 pkgs.ksnip
 pkgs.libsForQt5.kdeconnect-kde
-pkgs.sshfs
 pkgs.onboard
 pkgs.spotify
-pkgs.ibus
-pkgs.picom
-pkgs.xcompmgr
 pkgs.smplayer
 pkgs.qbittorrent
 pkgs.neofetch
@@ -177,3 +172,4 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
 boot.kernel.sysctl = { "vm.swappiness" = 10;};
 
 }
+
