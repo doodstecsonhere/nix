@@ -98,15 +98,11 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-pkgs.vivaldi
-pkgs.vivaldi-ffmpeg-codecs
-pkgs.wget
-pkgs.teamviewer
-pkgs.yt-dlp
 pkgs.linux-firmware
 pkgs.unzip
 pkgs.kcalc
 pkgs.ksnip
+pkgs.libsForQt5.kdeconnect-kde
 pkgs.sshfs
 pkgs.onboard
 pkgs.spotify
@@ -115,31 +111,26 @@ pkgs.picom
 pkgs.xcompmgr
 pkgs.smplayer
 pkgs.qbittorrent
-pkgs.baobab
-pkgs.borgbackup
 pkgs.neofetch
 pkgs.git
 pkgs.realvnc-vnc-viewer
 pkgs.google-chrome
-pkgs.stremio
 pkgs.megasync
 pkgs.xfce.xfce4-clipman-plugin
 pkgs.xfce.xfce4-pulseaudio-plugin
 pkgs.xfce.xfce4-whiskermenu-plugin
 pkgs.xfce.xfce4-panel-profiles
-pkgs.microsoft-edge
 pkgs.pavucontrol
-pkgs.libsForQt5.kdeconnect-kde
+pkgs.microsoft-edge
+pkgs.teamviewer
 pkgs.zoom-us
+pkgs.bibata-cursors
 pkgs.htop
 pkgs.home-manager
-pkgs.ffmpeg
-pkgs.bibata-cursors
 #unstable-only packages
-pkgs.stacer
+pkgs.normcap
 pkgs.peazip
 pkgs.tgpt
-pkgs.normcap
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
