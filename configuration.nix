@@ -106,8 +106,6 @@ pkgs.onboard
 pkgs.spotify
 pkgs.smplayer
 pkgs.qbittorrent
-pkgs.neofetch
-pkgs.git
 pkgs.realvnc-vnc-viewer
 pkgs.google-chrome
 pkgs.megasync
