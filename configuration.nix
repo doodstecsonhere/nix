@@ -155,13 +155,17 @@ networking.firewall.enable = false;
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 
-#keep NixOS system up-to-date automatically
-system.autoUpgrade.enable = true;
-system.autoUpgrade.allowReboot = true;
+# Auto System Update
+system.autoUpgrade = {
+      enable = true;
+};
 
-#automatic nix store noontime garbage collection
-nix.gc.automatic = true;
-nix.gc.dates = "12:10";
+# Automatic Garbage Collection
+nix.gc = {
+                automatic = true;
+                dates = "weekly";
+                options = "--delete-older-than 7d";
+        };
 
 #flakes
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -170,4 +174,3 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
 boot.kernel.sysctl = { "vm.swappiness" = 10;};
 
 }
-
