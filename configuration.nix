@@ -123,7 +123,6 @@ pkgs.home-manager
 #unstable-only packages
 pkgs.normcap
 pkgs.peazip
-pkgs.tgpt
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
