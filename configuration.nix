@@ -106,7 +106,6 @@ pkgs.onboard
 pkgs.spotify
 pkgs.smplayer
 pkgs.qbittorrent
-pkgs.realvnc-vnc-viewer
 pkgs.google-chrome
 pkgs.megasync
 pkgs.xfce.xfce4-clipman-plugin
@@ -119,10 +118,9 @@ pkgs.teamviewer
 pkgs.zoom-us
 pkgs.bibata-cursors
 pkgs.htop
-pkgs.home-manager
 #unstable-only packages
-pkgs.normcap
-pkgs.peazip
+#pkgs.normcap
+#pkgs.peazip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
