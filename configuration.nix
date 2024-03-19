@@ -99,7 +99,7 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
 linux-firmware
-kdePackages.kcalc
+gnome.gnome-calculator
 ksnip
 kdePackages.kdeconnect-kde
 sshfs
@@ -118,15 +118,16 @@ pavucontrol
 microsoft-edge
 teamviewer
 zoom-us
-bibata-cursors
+google-cursor
 htop
 normcap
-peazip
+gnome.file-roller
 onlyoffice-bin_latest
 gnome.gnome-control-center
 gnome-online-accounts
 pulseaudioFull
 floorp
+rescuetime
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
