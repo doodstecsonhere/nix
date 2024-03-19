@@ -15,7 +15,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "535u3c-nix-xf"; # Define your hostname.
+  networking.hostName = "nix-xf-535u3c"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -57,7 +57,7 @@
   };
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  #services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -77,7 +77,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.doods = {
@@ -85,7 +85,7 @@
     description = "Doods Tecson";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
+    #  firefox
     #  thunderbird
     ];
   };
@@ -98,29 +98,35 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-pkgs.linux-firmware
-pkgs.kcalc
-pkgs.ksnip
-pkgs.libsForQt5.kdeconnect-kde
-pkgs.onboard
-pkgs.spotify
-pkgs.smplayer
-pkgs.qbittorrent
-pkgs.google-chrome
-pkgs.megasync
-pkgs.xfce.xfce4-clipman-plugin
-pkgs.xfce.xfce4-pulseaudio-plugin
-pkgs.xfce.xfce4-whiskermenu-plugin
-pkgs.xfce.xfce4-panel-profiles
-pkgs.pavucontrol
-pkgs.microsoft-edge
-pkgs.teamviewer
-pkgs.zoom-us
-pkgs.bibata-cursors
-pkgs.htop
-#unstable-only packages
-#pkgs.normcap
-#pkgs.peazip
+linux-firmware
+kdePackages.kcalc
+ksnip
+kdePackages.kdeconnect-kde
+sshfs
+onboard
+spotify
+smplayer
+mpv
+qbittorrent
+google-chrome
+megasync
+xfce.xfce4-clipman-plugin
+xfce.xfce4-pulseaudio-plugin
+xfce.xfce4-whiskermenu-plugin
+xfce.xfce4-panel-profiles
+pavucontrol
+microsoft-edge
+teamviewer
+zoom-us
+bibata-cursors
+htop
+normcap
+peazip
+onlyoffice-bin_latest
+gnome.gnome-control-center
+gnome-online-accounts
+pulseaudioFull
+floorp
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -133,8 +139,6 @@ pkgs.htop
 
   # List services that you want to enable:
 
-services.teamviewer.enable = true;
-
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
@@ -142,7 +146,7 @@ services.teamviewer.enable = true;
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -150,7 +154,10 @@ networking.firewall.enable = false;
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
+
+# Teamviewer Service
+services.teamviewer.enable = true;
 
 # Auto System Update
 system.autoUpgrade = {
@@ -165,9 +172,14 @@ nix.gc = {
         };
 
 #flakes
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
+#nix.settings.experimental-features [ "nix-command" "flakes" ];
 
 #swappiness level
 boot.kernel.sysctl = { "vm.swappiness" = 10;};
+
+# Troubleshooting Additions in Unstable
+nixpkgs.config.permittedInsecurePackages = [
+                "freeimage-unstable-2021-11-01"
+              ];
 
 }
